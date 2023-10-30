@@ -6,8 +6,16 @@ from flask import Flask, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
 from os import getenv
+from flask_cors import CORS
 
+
+""" Create the flask app """
 app = Flask(__name__)
+
+
+""" create a Flask-CORS instance """
+cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
+
 
 """ Register the app_views blueprint to the Flask Instance """
 app.register_blueprint(app_views, url_prefix="/api/v1")
