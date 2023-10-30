@@ -1,0 +1,194 @@
+{
+	"files": [
+		{
+			"path": "api/v1/views/__init__.py",
+			"bookmarks": [
+				{
+					"line": 3,
+					"column": 0,
+					"label": "Question 6: updated view init to import new file"
+				}
+			]
+		},
+		{
+			"path": "api/v1/views/index.py",
+			"bookmarks": [
+				{
+					"line": 13,
+					"column": 0,
+					"label": "Question 3: created route status"
+				},
+				{
+					"line": 19,
+					"column": 0,
+					"label": "Question4: Created stats and endpoint"
+				}
+			]
+		},
+		{
+			"path": "api/v1/app.py",
+			"bookmarks": [
+				{
+					"line": 1,
+					"column": 0,
+					"label": "Question 3: created flask app and implemented blueprint register"
+				},
+				{
+					"line": 15,
+					"column": 0,
+					"label": "Question 3: implemented tear down app context"
+				},
+				{
+					"line": 21,
+					"column": 0,
+					"label": "Question 5: implemented Not ound 404 error"
+				}
+			]
+		},
+		{
+			"path": "models/engine/db_storage.py",
+			"bookmarks": [
+				{
+					"line": 73,
+					"column": 0,
+					"label": "Question 2: Improved db_storage"
+				}
+			]
+		},
+		{
+			"path": "models/engine/file_storage.py",
+			"bookmarks": [
+				{
+					"line": 67,
+					"column": 0,
+					"label": "Question 2: Improved file_storage"
+				}
+			]
+		},
+		{
+			"path": "test_get_count.py",
+			"bookmarks": [
+				{
+					"line": 0,
+					"column": 0,
+					"label": "Question 2: File and DB storage test. Has issue is not running as a script in terminal"
+				}
+			]
+		},
+		{
+			"path": "api/v1/views/states.py",
+			"bookmarks": [
+				{
+					"line": 11,
+					"column": 0,
+					"label": "question 6: Creted State object that handles RESTful API"
+				},
+				{
+					"line": 21,
+					"column": 0,
+					"label": "Question 6: Created State_id that retrieves state object"
+				},
+				{
+					"line": 30,
+					"column": 0,
+					"label": "Question 6: Implemented Delete a State object"
+				},
+				{
+					"line": 42,
+					"column": 0,
+					"label": "Question 6: Create state POST"
+				},
+				{
+					"line": 55,
+					"column": 0,
+					"label": "Question 6: Created the PUT method"
+				}
+			]
+		},
+		{
+			"path": "api/v1/views/cities.py",
+			"bookmarks": [
+				{
+					"line": 12,
+					"column": 0,
+					"label": "Question 7: Created a custom make response"
+				},
+				{
+					"line": 18,
+					"column": 0,
+					"label": "Question 7: Created the new view for city objects"
+				},
+				{
+					"line": 31,
+					"column": 0,
+					"label": "Question 7: created method to retrieve city objects"
+				},
+				{
+					"line": 42,
+					"column": 0,
+					"label": "Question 7: Created method to retrieve city object"
+				},
+				{
+					"line": 51,
+					"column": 0,
+					"label": "Question 7: Created the delete method that deletes a city object"
+				},
+				{
+					"line": 62,
+					"column": 0,
+					"label": "Question 7: create post method to create a City"
+				},
+				{
+					"line": 80,
+					"column": 0,
+					"label": "Question 7: Create the update method to update city objects"
+				}
+			]
+		},
+		{
+			"path": "api/v1/views/amenities.py",
+			"bookmarks": [
+				{
+					"line": 17,
+					"column": 0,
+					"label": "Question 8: create method get amenities that retrieves list of all the amenities"
+				},
+				{
+					"line": 49,
+					"column": 0,
+					"label": "Question 8: created a post method that creates an amenity"
+				}
+			]
+		},
+		{
+			"path": "api/v1/views/users.py",
+			"bookmarks": [
+				{
+					"line": 17,
+					"column": 0,
+					"label": "Question 9: This method retrieves a list of all users"
+				},
+				{
+					"line": 27,
+					"column": 0,
+					"label": "Question 9: Created method that retrives objects by Id"
+				},
+				{
+					"line": 36,
+					"column": 0,
+					"label": "Question 9: Created method that deletes user objects by id"
+				},
+				{
+					"line": 47,
+					"column": 0,
+					"label": "Question 9: Created a post method that creates new user objects"
+				},
+				{
+					"line": 62,
+					"column": 0,
+					"label": "Question 9: Created put method that updates user objects"
+				}
+			]
+		}
+	]
+}
