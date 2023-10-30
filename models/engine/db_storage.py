@@ -21,7 +21,7 @@ classes = {"Amenity": Amenity, "City": City,
 
 
 class DBStorage:
-    """interaacts with the MySQL database"""
+    """interacts with the MySQL database"""
     __engine = None
     __session = None
 
@@ -70,6 +70,28 @@ class DBStorage:
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session
+
+    def get(self, cls, id):
+        """
+        Query the current database session and return the object, or None if
+        not found.
+        """
+        try:
+            return self.__session.query(cls).get(id) if cls else None
+        except Exception as e:
+            print(f"An error occurred while getting the object: {e}")
+            return None
+
+    def count(self, cls=None):
+        """
+        Return the number of objects in storage matching the given class, or
+        count all if cls is None.
+        """
+        try:
+            return len(self.all(cls)) if cls else len(self.all())
+        except Exception as e:
+            print(f"An error occurred while counting objects: {e}")
+            return None
 
     def close(self):
         """call remove() method on the private session attribute"""
