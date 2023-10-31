@@ -11,17 +11,19 @@ import json
 
 @app_views.route('/states', strict_slashes=False, methods=['GET'])
 def get_states():
-    """Retrieves the list of all State objects."""
+    """ Retrieves the list of all State objects """
+    states_list = []
     states = storage.all(State)
-    states_list = [state.to_dict() for state in states.values()]
+    for state in states.values():
+        states_list.append(state.to_dict())
     return jsonify(states_list)
 
 
 @app_views.route('/states/<state_id>', strict_slashes=False, methods=["GET"])
 def get_state_id(state_id):
     """ Retrieves a specific State object by Id """
-    state = storage.get("State", state_id)
-    if not state:
+    state = storage.get(State, state_id)
+    if state is None:
         abort(404)
     return (jsonify(state.to_dict()))
 
