@@ -31,7 +31,7 @@ def get_state_id(state_id):
 def state_delete(state_id):
     """ Deletes a State object """
     state_obj = storage.get(State, state_id)
-    if not state_obj:
+    if state_obj is None:
         abort(404)
     storage.delete(state_obj)
     storage.save()
@@ -42,7 +42,7 @@ def state_delete(state_id):
 def state_create():
     """ Creates a State """
     state_dict = request.get_json()
-    if not state_dict:
+    if state_dict is None:
         abort(400, 'Not a JSON')
     if 'name' not in state_dict:
         abort(400, 'Missing name')
@@ -55,10 +55,10 @@ def state_create():
 def state_update(state_id):
     """ Updates a State object """
     state_obj = storage.get(State, state_id)
-    if not state_obj:
+    if state_obj is None:
         abort(404)
     state_dict = request.get_json()
-    if not state_dict:
+    if state_dict is None:
         abort(400, 'Not a JSON')
     for key, value in state_dict.items():
         if key not in ['id', 'created_at', 'updated_at']:
