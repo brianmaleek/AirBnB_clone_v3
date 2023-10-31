@@ -18,8 +18,8 @@ def custom_make_response(status_code, message=None):
 @app_views.route('/amenities', strict_slashes=False, methods=['GET'])
 def get_amenities():
     """ Retrieves the list of all Amenity objects """
-    amenities_list = []
     amenities = storage.all(Amenity)
+    amenities_list = []
     for amenity in amenities.values():
         amenities_list.append(amenity.to_dict())
     return jsonify(amenities_list)
