@@ -69,13 +69,9 @@ class FileStorage:
         """
         Returns the object based on the class and its ID, or None if not found.
         """
-        try:
-            return next((value for value in self.__objects.values() if cls and
-                         (cls == value.__class__ or cls ==
-                          value.__class__.__name__) and id == value.id), None)
-        except Exception as e:
-            print("An error occurred while getting the object: {}".format(e))
-            return None
+        return next((value for value in self.__objects.values() if cls and
+                     (cls == value.__class__ or cls ==
+                      value.__class__.__name__) and id == value.id), None)
 
     def count(self, cls=None):
         """
