@@ -79,7 +79,7 @@ class DBStorage:
         try:
             return self.__session.query(cls).get(id) if cls else None
         except Exception as e:
-            print(f"An error occurred while getting the object: {e}")
+            print("An error occurred while getting the object: {}".format(e))
             return None
 
     def count(self, cls=None):
@@ -90,7 +90,7 @@ class DBStorage:
         try:
             return len(self.all(cls)) if cls else len(self.all())
         except Exception as e:
-            print(f"An error occurred while counting objects: {e}")
+            print("An error occurred while counting objects: {}".format(e))
             return None
 
     def close(self):
