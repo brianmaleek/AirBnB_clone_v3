@@ -11,19 +11,17 @@ import json
 
 @app_views.route('/states', strict_slashes=False, methods=['GET'])
 def get_states():
-    """ Retrieves the list of all State objects """
-    states_list = []
+    """Retrieves the list of all State objects."""
     states = storage.all(State)
-    for state in states.values():
-        states_list.append(state.to_dict())
+    states_list = [state.to_dict() for state in states.values()]
     return jsonify(states_list)
 
 
 @app_views.route('/states/<state_id>', strict_slashes=False, methods=["GET"])
 def get_state_id(state_id):
     """ Retrieves a specific State object by Id """
-    state = storage.get(State, state_id)
-    if state is None:
+    state = storage.get("State", state_id)
+    if not state:
         abort(404)
     return (jsonify(state.to_dict()))
 
@@ -33,7 +31,7 @@ def get_state_id(state_id):
 def state_delete(state_id):
     """ Deletes a State object """
     state_obj = storage.get(State, state_id)
-    if state_obj is None:
+    if not state_obj:
         abort(404)
     storage.delete(state_obj)
     storage.save()
@@ -44,7 +42,7 @@ def state_delete(state_id):
 def state_create():
     """ Creates a State """
     state_dict = request.get_json()
-    if state_dict is None:
+    if not state_dict:
         abort(400, 'Not a JSON')
     if 'name' not in state_dict:
         abort(400, 'Missing name')
@@ -57,10 +55,10 @@ def state_create():
 def state_update(state_id):
     """ Updates a State object """
     state_obj = storage.get(State, state_id)
-    if state_obj is None:
+    if not state_obj:
         abort(404)
     state_dict = request.get_json()
-    if state_dict is None:
+    if not state_dict:
         abort(400, 'Not a JSON')
     for key, value in state_dict.items():
         if key not in ['id', 'created_at', 'updated_at']:
