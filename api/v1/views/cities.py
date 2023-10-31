@@ -10,13 +10,19 @@ from models.city import City
 from flask import jsonify, abort, request, make_response
 
 
+def custom_make_response(status_code, message=None):
+    """ Creates a custom response """
+    response = {'error': message}
+    return make_response(jsonify(response), status_code)
+
+
 @app_views.route('/states/<state_id>/cities', strict_slashes=False,
                  methods=['GET'])
 def get_cities(state_id):
     """ Retrieves the list of all City objects of a State """
     state = storage.get(State, state_id)
     if state is None:
-        return make_response(404, 'State Not found')
+        return custom_make_response(404, 'State Not found')
     cities_list = []
     for city in state.cities:
         cities_list.append(city.to_dict())
@@ -39,7 +45,7 @@ def get_city_id(city_id):
     """ Retrieves a specific City object by Id """
     city = storage.get(City, city_id)
     if city is None:
-        return make_response(404, 'City Not found')
+        return custom_make_response(404, 'City Not found')
     return (jsonify(city.to_dict()))
 
 
@@ -48,7 +54,7 @@ def city_delete(city_id):
     """ Deletes a City object """
     city_obj = storage.get(City, city_id)
     if city_obj is None:
-        return make_response(404, 'City Not found')
+        return custom_make_response(404, 'City Not found')
     storage.delete(city_obj)
     storage.save()
     return (jsonify({}), 200)
@@ -60,12 +66,12 @@ def city_create(state_id):
     """ Creates a City """
     state = storage.get(State, state_id)
     if state is None:
-        return make_response(404, 'State Not found')
+        return custom_make_response(404, 'State Not found')
     city_dict = request.get_json()
     if city_dict is None:
-        return make_response(400, 'Not a JSON')
+        return custom_make_response(400, 'Not a JSON')
     if 'name' not in city_dict:
-        return make_response(400, 'Missing name')
+        return custom_make_response(400, 'Missing name')
     city_dict['state_id'] = state_id
     new_city = City(**city_dict)
     new_city.save()
@@ -77,10 +83,10 @@ def city_update(city_id):
     """ Updates a City object """
     city_obj = storage.get(City, city_id)
     if city_obj is None:
-        return make_response(404, 'City Not found')
+        return custom_make_response(404, 'City Not found')
     city_dict = request.get_json()
     if city_dict is None:
-        return make_response(400, 'Not a JSON')
+        return custom_make_response(400, 'Not a JSON')
     for key, value in city_dict.items():
         if key not in ['id', 'created_at', 'updated_at']:
             setattr(city_obj, key, value)
