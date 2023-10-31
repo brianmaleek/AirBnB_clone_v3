@@ -74,7 +74,7 @@ class FileStorage:
                          (cls == value.__class__ or cls ==
                           value.__class__.__name__) and id == value.id), None)
         except Exception as e:
-            print(f"An error occurred while getting the object: {e}")
+            print("An error occurred while getting the object: {}".format(e))
             return None
 
     def count(self, cls=None):
@@ -86,7 +86,7 @@ class FileStorage:
             objects = self.all(cls) if cls else self.all()
             return len(objects)
         except Exception as e:
-            print(f"An error occurred while counting objects: {e}")
+            print("An error occurred while counting objects: {}".format(e))
             return None
 
     def close(self):
