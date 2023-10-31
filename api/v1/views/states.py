@@ -12,8 +12,8 @@ import json
 @app_views.route('/states', strict_slashes=False, methods=['GET'])
 def get_states():
     """ Retrieves the list of all State objects """
-    states = storage.all(State)
     states_list = []
+    states = storage.all(State)
     for state in states.values():
         states_list.append(state.to_dict())
     return jsonify(states_list)
